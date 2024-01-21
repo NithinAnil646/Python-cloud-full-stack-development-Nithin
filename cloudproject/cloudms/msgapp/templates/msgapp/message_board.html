@@ -1,0 +1,42 @@
+<!-- message_board.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Message Board</title>
+</head>
+<body>
+    <h1>Cloud Message Board</h1>
+
+    <!-- Submit Message Form -->
+    <form action="{% url 'submit_message' %}" method="post">
+        {% csrf_token %}
+        <label for="sender">Sender Name (A):</label>
+        <input type="text" name="sender" required>
+        
+        <label for="receiver">Receiver Name (B):</label>
+        <input type="text" name="receiver" required>
+        
+        <label for="message">Message:</label>
+        <textarea name="message" required></textarea>
+        
+        <button type="submit">Submit Message</button>
+    </form>
+
+    <!-- Get Message Form -->
+    <form action="{% url 'get_messages' %}" method="post">
+        {% csrf_token %}
+        <label for="get_receiver">Receiver Name:</label>
+        <input type="text" name="get_receiver" required>
+        
+        <button type="submit">Get Messages</button>
+    </form>
+
+    <!-- Display Messages -->
+    <div id="messages">
+        <!-- Messages will be displayed here -->
+    </div>
+</body>
+</html>
